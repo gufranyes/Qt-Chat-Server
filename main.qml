@@ -9,6 +9,13 @@ Window {
     visible: true
     title: qsTr("Chat Server")
 
+    Connections{
+        target: server
+        function onNewMessage(baMessage){
+            listModelMessages.append({message: baMessage + ""})
+        }
+    }
+
     ColumnLayout{
         anchors.fill: parent    //Fill area of texts as wide as window panel
         ListView{               //List messages
@@ -16,8 +23,9 @@ Window {
             Layout.fillWidth: true
             clip: true
             model: ListModel{
+                id: listModelMessages
                 ListElement{
-                    message: "Hi"
+                    message: "Welcome to the Server!"
                 }
             }
             delegate: ItemDelegate{

@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-
+#include <QQmlContext>
+#include "tcpserver.h"
 
 int main(int argc, char *argv[])
 {
@@ -17,6 +18,10 @@ int main(int argc, char *argv[])
         if (!obj && url == objUrl)
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
+
+    tcpServer tcpServer;
+
+    engine.rootContext()->setContextProperty("server", &tcpServer);
     engine.load(url);
 
     return app.exec();
