@@ -8,7 +8,9 @@ tcpServer::tcpServer(QObject *parent) : QObject(parent)
         qInfo() << "Listening Succesfully...";
     }
 }
-
+void tcpServer::sendMessage(const QString &message){
+    emit newMessage("Server: " + message.toUtf8());
+}
 void tcpServer::onNewConnection()
 {
     const auto client = _server.nextPendingConnection();

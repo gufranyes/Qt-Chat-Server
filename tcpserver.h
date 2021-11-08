@@ -15,6 +15,9 @@ public:
 signals:
     void newMessage(const QByteArray &message);
 
+public slots:
+    void sendMessage(const QString &message);
+
 private slots:
     void onNewConnection();
     void onReadyRead();

@@ -44,7 +44,7 @@ Window {
                 id: buttonSend
                 text: qsTr("Send")
                 onClicked: {
-                    console.log("Message Sent")
+                    server.sendMessage(textFieldMessage.text)
                     textFieldMessage.clear()
                 }
             }
